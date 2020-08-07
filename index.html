@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Real Age</title>
+    <style>
+        /* * {
+            transition: all 0.5s;
+        } */
+        
+        .main {
+            height: 35vw;
+            width: 28vw;
+            border: 1px solid rgb(0, 255, 170);
+            margin: 5vw 0 0 32vw;
+            border-radius: 10px;
+            background: linear-gradient(rgba(144, 238, 144, 0.9), rgba(160, 160, 156, 0.9));
+            visibility: hidden;
+            /* opacity: 0; */
+        }
+        
+        h3 {
+            margin-top: 5px;
+            margin-left: 6vw;
+        }
+        
+        input {
+            margin-top: 5px;
+            margin-left: 8vw;
+            outline: none;
+        }
+        
+        .show {
+            height: 3vw;
+            width: 25vw;
+            border: 1px solid black;
+            text-align: left;
+            line-height: 2.2;
+            font-size: 18px;
+            margin-left: 1.5vw;
+            margin-top: 1vw;
+            border-radius: 10px;
+        }
+        
+        button {
+            height: 2.5vw;
+            margin-top: 8px;
+            margin-left: 8vw;
+            background-color: rgb(0, 255, 170);
+            border-radius: 10px;
+            /* color: white; */
+            outline: none;
+            font-weight: bold;
+        }
+        
+        body {
+            background-image: url("kashmir.jpg");
+            background-color: lightseagreen;
+        }
+        
+        .main2 {
+            /* border: 1px solid r  ed; */
+            height: 20vw;
+            width: 30vw;
+            margin: -25vw 0 0 30vw;
+            /* text-align: center; */
+        }
+        
+        .main2 h2 {
+            margin: 2vw 0 0 3vw;
+            text-align: center;
+            color: rgb(10, 73, 23);
+            width: fit-content;
+        }
+        
+        .main2 button {
+            width: 10vw;
+            margin: 3vw 0 0 10vw;
+            font-weight: bold;
+            background-color: rgb(10, 73, 23);
+        }
+    </style>
+</head>
+<div class="main">
+    <h3>Enter Your Date Of Birth</h3>
+    <input type="date">
+
+
+    <div class="show"></div>
+    <div class="show"></div>
+    <div class="show"></div>
+    <div class="show"></div>
+    <div class="show"></div>
+    <div class="show"></div>
+
+    <button onclick="datedob()">Calculate Your Real Age</button>
+</div>
+
+<div class="main2">
+
+    <h2>Click Here For Age Calculator</h2>
+
+    <button class="btn2" onclick="visible()">Click Here</button>
+
+</div>
+
+<body>
+
+</body>
+<script>
+    function datedob() {
+        var date_of_birth = document.getElementsByTagName('input')[0].value;
+        var date_of_birth_from_1970 = Date.parse(date_of_birth)
+
+        var date_mili_sec_from_1970 = Date.now()
+
+        var real_age = date_mili_sec_from_1970 - date_of_birth_from_1970
+        var age_in_sec = real_age / 1000
+        var age_in_mint = age_in_sec / 60
+        var age_in_hour = age_in_mint / 60
+        var age_in_day = age_in_hour / 24
+        var age_in_month = age_in_day / 30.42
+        var age_in_year = age_in_month / 12
+
+        document.getElementsByClassName('show')[0].innerHTML = `Your Age In Seconds:${age_in_sec}`
+        document.getElementsByClassName('show')[1].innerHTML = `Your age In Minutes:${age_in_mint}`
+        document.getElementsByClassName('show')[2].innerHTML = `Your Age In Hours:${age_in_hour}`
+        document.getElementsByClassName('show')[3].innerHTML = `Your Age In Days:${age_in_day}`
+        document.getElementsByClassName('show')[4].innerHTML = `Your Age In Months:${age_in_month}`
+        document.getElementsByClassName('show')[5].innerHTML = `Your Age In Years:${age_in_year}`
+    }
+
+    function visible() {
+        document.getElementsByClassName('main')[0].style.visibility = "visible"
+            // document.getElementsByClassName('main')[0].style = 'opacity: 1'
+
+        document.querySelector('.main2').style.visibility = "hidden"
+    }
+</script>
+
+</html>
